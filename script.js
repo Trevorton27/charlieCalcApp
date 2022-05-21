@@ -1,41 +1,42 @@
-let num1;
-let num2;
-let operator;
+let num1 = '';
+let num2 = '';
+let operator = '';
+
+const displayNumber = document.getElementById('display');
 
 const numbers = document.querySelectorAll('.number-button');
 numbers.forEach((number) => {
-       
-      number.addEventListener("click", (e) => {
-        const click1 = document.getElementById('buttonOne').value;
-        handleDisplay(click1);       
-      }); 
-           
-      //number.addEventListener("click", (e) => {
-        //const click2 = document.getElementById('buttonTwo').value;
-        //handleDisplay(click2);
-      //});
+  number.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!operator) {
+      num1 += e.target.value;
+      console.log('num1: ', num1);
+      displayNumber.value = num1;
+    }
+    if (num1 && operator) {
+      num2 += e.target.value;
+      console.log('num2: ', num2);
+      displayNumber.value = num2;
+    }
+  });
 });
 
+const operators = document.querySelectorAll('.operator-button');
+operators.forEach((operatorValue) => {
+  operatorValue.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (num1) operator += e.target.value;
+    console.log('operator: ', operator);
+  });
+});
 
-function handleDisplay(digit){
-  const displayNumber = document.getElementById('display');
-  displayNumber.value = digit;
-
-  performCalculation(digit);
+function performCalculation() {
+  // convert num1 and num2 to numbers
+  // check value of operator
+  // execute correct calculation based on value of operator and
+  //num1 and num2
+  //update display with result
 }
-
-function performCalculation(num1) {
-
-}
-
-
-
-
-
-
-
-
-
 
 /*
 const operators = document.querySelectorAll('.operator-button');
